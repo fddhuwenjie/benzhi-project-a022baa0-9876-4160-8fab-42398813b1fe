@@ -81,7 +81,18 @@ func (s *Store) Put(b domain.IceCoreBatch, expected int) error {
 	}
 	b.Revision = cur.Revision + 1
 	s.data.Batches[b.ID] = b
-	return s.persistLocked()
+	if err := s.persistLocked(); err != nil {
+		// The on-disk snapshot is unchanged on failure, so roll the
+		// in-memory mutation back to keep Get/List and subsequent
+		// persistence consistent with what is actually persisted.
+		if ok {
+			s.data.Batches[b.ID] = cur
+		} else {
+			delete(s.data.Batches, b.ID)
+		}
+		return err
+	}
+	return nil
 }
 func (s *Store) SaveIdempotency(key string, v any) error {
 	if key == "" {
@@ -90,8 +101,19 @@ func (s *Store) SaveIdempotency(key string, v any) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	raw, _ := json.Marshal(v)
+	prev, ok := s.data.Idempotency[key]
 	s.data.Idempotency[key] = raw
-	return s.persistLocked()
+	if err := s.persistLocked(); err != nil {
+		// Keep memory in sync with the unchanged on-disk snapshot so a
+		// failed write does not leak into reads or later persistence.
+		if ok {
+			s.data.Idempotency[key] = prev
+		} else {
+			delete(s.data.Idempotency, key)
+		}
+		return err
+	}
+	return nil
 }
 func (s *Store) GetIdempotency(key string) (json.RawMessage, bool) {
 	if key == "" {
