@@ -14,6 +14,7 @@ type Service struct {
 	store     *store.Store
 	audit     *audit.Logger
 	mu        sync.Mutex
+	riskMu    sync.RWMutex
 	riskCache map[string]riskSummaryCacheEntry
 }
 

@@ -376,9 +376,13 @@ func (s *Service) RiskSummary(id string) (map[string]any, error) {
 	if e != nil {
 		return nil, e
 	}
+	s.riskMu.RLock()
 	if cached, ok := s.riskCache[id]; ok && cached.revision == b.Revision {
-		return cached.value, nil
+		v := cached.value
+		s.riskMu.RUnlock()
+		return v, nil
 	}
+	s.riskMu.RUnlock()
 	var out map[string]any
 	if b.Risk != nil && b.Risk.Revision == b.Revision {
 		out = map[string]any{"batch_id": id, "grade": b.Risk.Grade, "score": b.Risk.Score, "factors": b.Risk.Factors, "preconditions": b.Risk.Preconditions, "revision": b.Risk.Revision, "missing": b.Risk.Missing, "status": b.Status}
@@ -386,7 +390,17 @@ func (s *Service) RiskSummary(id string) (map[string]any, error) {
 		r := domain.EvaluateRisk(b)
 		out = map[string]any{"batch_id": id, "grade": r.Grade, "score": r.Score, "factors": r.Factors, "preconditions": r.Preconditions, "revision": b.Revision, "missing": r.Missing, "status": b.Status}
 	}
+	s.riskMu.Lock()
+	// Re-check under write lock: another goroutine may have populated the same
+	// revision while this one computed. Prefer the existing entry so all callers
+	// observe the identical cached value, preserving reuse by ID+revision.
+	if cached, ok := s.riskCache[id]; ok && cached.revision == b.Revision {
+		v := cached.value
+		s.riskMu.Unlock()
+		return v, nil
+	}
 	s.riskCache[id] = riskSummaryCacheEntry{revision: b.Revision, value: out}
+	s.riskMu.Unlock()
 	return out, nil
 }
 func (s *Service) Observations(id string) ([]domain.ThawObservation, error) {
