@@ -2017,6 +2017,162 @@
         "gate_reason": "all_stages_completed",
         "paused": false
       }
+    },
+    "batch-1787755792009755076": {
+      "id": "batch-1787755792009755076",
+      "core_code": "CHK-1787755792009215367-",
+      "drill_site": "chk-1787755792009215367-",
+      "depth_interval_m": "10-20",
+      "collection_time": "0001-01-01T00:00:00Z",
+      "initial_temperature_c": -30,
+      "integrity_grade": "low",
+      "status": "sealed",
+      "revision": 6,
+      "created_at": "2026-08-26T14:49:52.009758666Z",
+      "transport": {
+        "summary": "ok",
+        "min_temperature_c": -30,
+        "max_temperature_c": -20,
+        "allowed_min_c": -40,
+        "allowed_max_c": 0,
+        "exceeded": false,
+        "deviation_note": "",
+        "low_exceeded_minutes": 0,
+        "high_exceeded_minutes": 0,
+        "max_deviation_c": 0,
+        "exposure_degree_minutes": 0,
+        "severity": "none"
+      },
+      "plan": {
+        "id": "plan-1787755792020256878",
+        "batch_id": "batch-1787755792009755076",
+        "stages": [
+          {
+            "index": 1,
+            "target_temperature_c": -1,
+            "hold_minutes": 5
+          }
+        ],
+        "target_temperature_c": 0,
+        "hold_minutes": 0,
+        "safety_preconditions": null,
+        "author_id": "tech",
+        "approver_id": "qa",
+        "approval_status": "approved",
+        "revision": 3,
+        "version": 1
+      },
+      "observations": [
+        {
+          "id": "obs-1787755792029935216",
+          "batch_id": "batch-1787755792009755076",
+          "plan_id": "plan-1787755792020256878",
+          "stage_index": 1,
+          "observed_temperature_c": -1,
+          "meltwater_volume_ml": 2,
+          "appearance_note": "clear",
+          "deviation_code": "",
+          "recorded_by": "",
+          "recorded_at": "2026-08-26T14:49:52.029936006Z",
+          "hold_minutes": 5
+        }
+      ],
+      "review": {
+        "id": "review-1787755792034651088",
+        "batch_id": "batch-1787755792009755076",
+        "reviewer_id": "independent",
+        "findings": "",
+        "corrective_action": "",
+        "retest_result": "",
+        "decision": "pass",
+        "report_digest": "59fc7a543c87dd85a998f6a5fdfe40466a3dff38b2429780b1402f0c67e51499",
+        "sealed_at": "2026-08-26T14:49:52.034652148Z"
+      },
+      "risk": {
+        "grade": "low",
+        "score": 0,
+        "factors": [
+          {
+            "name": "low_exceeded_minutes",
+            "value": 0,
+            "threshold": 0,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "high_exceeded_minutes",
+            "value": 0,
+            "threshold": 0,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "max_deviation_c",
+            "value": 0,
+            "threshold": 3,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "exposure_degree_minutes",
+            "value": 0,
+            "threshold": 30,
+            "contribution": 2,
+            "triggered": false
+          }
+        ],
+        "preconditions": [
+          {
+            "name": "deviation_note",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "disposition",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "quality_approval",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "dual_review",
+            "required": false,
+            "satisfied": true
+          }
+        ],
+        "revision": 5,
+        "evaluated_at": "2026-08-26T14:49:52.029936646Z"
+      },
+      "plan_history": [
+        {
+          "id": "plan-1787755792020256878",
+          "batch_id": "batch-1787755792009755076",
+          "stages": [
+            {
+              "index": 1,
+              "target_temperature_c": -1,
+              "hold_minutes": 5
+            }
+          ],
+          "target_temperature_c": 0,
+          "hold_minutes": 0,
+          "safety_preconditions": null,
+          "author_id": "tech",
+          "approver_id": "qa",
+          "approval_status": "approved",
+          "revision": 3,
+          "version": 1
+        }
+      ],
+      "execution": {
+        "completed_stages": 1,
+        "remaining_stages": 0,
+        "gate_reason": "all_stages_completed",
+        "paused": false
+      }
     }
   },
   "idempotency": {
@@ -9673,6 +9829,671 @@
         {
           "id": "plan-1787750596665395813",
           "batch_id": "batch-1787750596655825053",
+          "stages": [
+            {
+              "index": 1,
+              "target_temperature_c": -1,
+              "hold_minutes": 5
+            }
+          ],
+          "target_temperature_c": 0,
+          "hold_minutes": 0,
+          "safety_preconditions": null,
+          "author_id": "tech",
+          "approver_id": "qa",
+          "approval_status": "approved",
+          "revision": 3,
+          "version": 1
+        }
+      ],
+      "execution": {
+        "completed_stages": 1,
+        "remaining_stages": 0,
+        "gate_reason": "all_stages_completed",
+        "paused": false
+      }
+    },
+    "chk-1787755792009215367-1": {
+      "id": "batch-1787755792009755076",
+      "core_code": "CHK-1787755792009215367-",
+      "drill_site": "chk-1787755792009215367-",
+      "depth_interval_m": "10-20",
+      "collection_time": "0001-01-01T00:00:00Z",
+      "initial_temperature_c": -30,
+      "integrity_grade": "",
+      "status": "draft",
+      "revision": 1,
+      "created_at": "2026-08-26T14:49:52.009758666Z",
+      "execution": {
+        "completed_stages": 0,
+        "remaining_stages": 0,
+        "paused": false
+      }
+    },
+    "chk-1787755792009215367-2": {
+      "id": "batch-1787755792009755076",
+      "core_code": "CHK-1787755792009215367-",
+      "drill_site": "chk-1787755792009215367-",
+      "depth_interval_m": "10-20",
+      "collection_time": "0001-01-01T00:00:00Z",
+      "initial_temperature_c": -30,
+      "integrity_grade": "low",
+      "status": "awaiting_plan",
+      "revision": 2,
+      "created_at": "2026-08-26T14:49:52.009758666Z",
+      "transport": {
+        "summary": "ok",
+        "min_temperature_c": -30,
+        "max_temperature_c": -20,
+        "allowed_min_c": -40,
+        "allowed_max_c": 0,
+        "exceeded": false,
+        "deviation_note": "",
+        "low_exceeded_minutes": 0,
+        "high_exceeded_minutes": 0,
+        "max_deviation_c": 0,
+        "exposure_degree_minutes": 0,
+        "severity": "none"
+      },
+      "risk": {
+        "grade": "low",
+        "score": 0,
+        "factors": [
+          {
+            "name": "low_exceeded_minutes",
+            "value": 0,
+            "threshold": 0,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "high_exceeded_minutes",
+            "value": 0,
+            "threshold": 0,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "max_deviation_c",
+            "value": 0,
+            "threshold": 3,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "exposure_degree_minutes",
+            "value": 0,
+            "threshold": 30,
+            "contribution": 2,
+            "triggered": false
+          }
+        ],
+        "preconditions": [
+          {
+            "name": "deviation_note",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "disposition",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "quality_approval",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "dual_review",
+            "required": false,
+            "satisfied": true
+          }
+        ],
+        "revision": 2,
+        "evaluated_at": "2026-08-26T14:49:52.015564425Z"
+      },
+      "execution": {
+        "completed_stages": 0,
+        "remaining_stages": 0,
+        "paused": false
+      }
+    },
+    "chk-1787755792009215367-3": {
+      "id": "batch-1787755792009755076",
+      "core_code": "CHK-1787755792009215367-",
+      "drill_site": "chk-1787755792009215367-",
+      "depth_interval_m": "10-20",
+      "collection_time": "0001-01-01T00:00:00Z",
+      "initial_temperature_c": -30,
+      "integrity_grade": "low",
+      "status": "plan_pending",
+      "revision": 3,
+      "created_at": "2026-08-26T14:49:52.009758666Z",
+      "transport": {
+        "summary": "ok",
+        "min_temperature_c": -30,
+        "max_temperature_c": -20,
+        "allowed_min_c": -40,
+        "allowed_max_c": 0,
+        "exceeded": false,
+        "deviation_note": "",
+        "low_exceeded_minutes": 0,
+        "high_exceeded_minutes": 0,
+        "max_deviation_c": 0,
+        "exposure_degree_minutes": 0,
+        "severity": "none"
+      },
+      "plan": {
+        "id": "plan-1787755792020256878",
+        "batch_id": "batch-1787755792009755076",
+        "stages": [
+          {
+            "index": 1,
+            "target_temperature_c": -1,
+            "hold_minutes": 5
+          }
+        ],
+        "target_temperature_c": 0,
+        "hold_minutes": 0,
+        "safety_preconditions": null,
+        "author_id": "tech",
+        "approver_id": "",
+        "approval_status": "pending",
+        "revision": 3,
+        "version": 1
+      },
+      "risk": {
+        "grade": "low",
+        "score": 0,
+        "factors": [
+          {
+            "name": "low_exceeded_minutes",
+            "value": 0,
+            "threshold": 0,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "high_exceeded_minutes",
+            "value": 0,
+            "threshold": 0,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "max_deviation_c",
+            "value": 0,
+            "threshold": 3,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "exposure_degree_minutes",
+            "value": 0,
+            "threshold": 30,
+            "contribution": 2,
+            "triggered": false
+          }
+        ],
+        "preconditions": [
+          {
+            "name": "deviation_note",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "disposition",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "quality_approval",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "dual_review",
+            "required": false,
+            "satisfied": true
+          }
+        ],
+        "revision": 2,
+        "evaluated_at": "2026-08-26T14:49:52.015564425Z"
+      },
+      "plan_history": [
+        {
+          "id": "plan-1787755792020256878",
+          "batch_id": "batch-1787755792009755076",
+          "stages": [
+            {
+              "index": 1,
+              "target_temperature_c": -1,
+              "hold_minutes": 5
+            }
+          ],
+          "target_temperature_c": 0,
+          "hold_minutes": 0,
+          "safety_preconditions": null,
+          "author_id": "tech",
+          "approver_id": "",
+          "approval_status": "pending",
+          "revision": 3,
+          "version": 1
+        }
+      ],
+      "execution": {
+        "completed_stages": 0,
+        "remaining_stages": 0,
+        "paused": false
+      }
+    },
+    "chk-1787755792009215367-4": {
+      "id": "batch-1787755792009755076",
+      "core_code": "CHK-1787755792009215367-",
+      "drill_site": "chk-1787755792009215367-",
+      "depth_interval_m": "10-20",
+      "collection_time": "0001-01-01T00:00:00Z",
+      "initial_temperature_c": -30,
+      "integrity_grade": "low",
+      "status": "thawing",
+      "revision": 4,
+      "created_at": "2026-08-26T14:49:52.009758666Z",
+      "transport": {
+        "summary": "ok",
+        "min_temperature_c": -30,
+        "max_temperature_c": -20,
+        "allowed_min_c": -40,
+        "allowed_max_c": 0,
+        "exceeded": false,
+        "deviation_note": "",
+        "low_exceeded_minutes": 0,
+        "high_exceeded_minutes": 0,
+        "max_deviation_c": 0,
+        "exposure_degree_minutes": 0,
+        "severity": "none"
+      },
+      "plan": {
+        "id": "plan-1787755792020256878",
+        "batch_id": "batch-1787755792009755076",
+        "stages": [
+          {
+            "index": 1,
+            "target_temperature_c": -1,
+            "hold_minutes": 5
+          }
+        ],
+        "target_temperature_c": 0,
+        "hold_minutes": 0,
+        "safety_preconditions": null,
+        "author_id": "tech",
+        "approver_id": "qa",
+        "approval_status": "approved",
+        "revision": 3,
+        "version": 1
+      },
+      "risk": {
+        "grade": "low",
+        "score": 0,
+        "factors": [
+          {
+            "name": "low_exceeded_minutes",
+            "value": 0,
+            "threshold": 0,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "high_exceeded_minutes",
+            "value": 0,
+            "threshold": 0,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "max_deviation_c",
+            "value": 0,
+            "threshold": 3,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "exposure_degree_minutes",
+            "value": 0,
+            "threshold": 30,
+            "contribution": 2,
+            "triggered": false
+          }
+        ],
+        "preconditions": [
+          {
+            "name": "deviation_note",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "disposition",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "quality_approval",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "dual_review",
+            "required": false,
+            "satisfied": true
+          }
+        ],
+        "revision": 2,
+        "evaluated_at": "2026-08-26T14:49:52.015564425Z"
+      },
+      "plan_history": [
+        {
+          "id": "plan-1787755792020256878",
+          "batch_id": "batch-1787755792009755076",
+          "stages": [
+            {
+              "index": 1,
+              "target_temperature_c": -1,
+              "hold_minutes": 5
+            }
+          ],
+          "target_temperature_c": 0,
+          "hold_minutes": 0,
+          "safety_preconditions": null,
+          "author_id": "tech",
+          "approver_id": "qa",
+          "approval_status": "approved",
+          "revision": 3,
+          "version": 1
+        }
+      ],
+      "execution": {
+        "completed_stages": 0,
+        "remaining_stages": 0,
+        "paused": false
+      }
+    },
+    "chk-1787755792009215367-5": {
+      "id": "batch-1787755792009755076",
+      "core_code": "CHK-1787755792009215367-",
+      "drill_site": "chk-1787755792009215367-",
+      "depth_interval_m": "10-20",
+      "collection_time": "0001-01-01T00:00:00Z",
+      "initial_temperature_c": -30,
+      "integrity_grade": "low",
+      "status": "review",
+      "revision": 5,
+      "created_at": "2026-08-26T14:49:52.009758666Z",
+      "transport": {
+        "summary": "ok",
+        "min_temperature_c": -30,
+        "max_temperature_c": -20,
+        "allowed_min_c": -40,
+        "allowed_max_c": 0,
+        "exceeded": false,
+        "deviation_note": "",
+        "low_exceeded_minutes": 0,
+        "high_exceeded_minutes": 0,
+        "max_deviation_c": 0,
+        "exposure_degree_minutes": 0,
+        "severity": "none"
+      },
+      "plan": {
+        "id": "plan-1787755792020256878",
+        "batch_id": "batch-1787755792009755076",
+        "stages": [
+          {
+            "index": 1,
+            "target_temperature_c": -1,
+            "hold_minutes": 5
+          }
+        ],
+        "target_temperature_c": 0,
+        "hold_minutes": 0,
+        "safety_preconditions": null,
+        "author_id": "tech",
+        "approver_id": "qa",
+        "approval_status": "approved",
+        "revision": 3,
+        "version": 1
+      },
+      "observations": [
+        {
+          "id": "obs-1787755792029935216",
+          "batch_id": "batch-1787755792009755076",
+          "plan_id": "plan-1787755792020256878",
+          "stage_index": 1,
+          "observed_temperature_c": -1,
+          "meltwater_volume_ml": 2,
+          "appearance_note": "clear",
+          "deviation_code": "",
+          "recorded_by": "",
+          "recorded_at": "2026-08-26T14:49:52.029936006Z",
+          "hold_minutes": 5
+        }
+      ],
+      "risk": {
+        "grade": "low",
+        "score": 0,
+        "factors": [
+          {
+            "name": "low_exceeded_minutes",
+            "value": 0,
+            "threshold": 0,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "high_exceeded_minutes",
+            "value": 0,
+            "threshold": 0,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "max_deviation_c",
+            "value": 0,
+            "threshold": 3,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "exposure_degree_minutes",
+            "value": 0,
+            "threshold": 30,
+            "contribution": 2,
+            "triggered": false
+          }
+        ],
+        "preconditions": [
+          {
+            "name": "deviation_note",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "disposition",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "quality_approval",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "dual_review",
+            "required": false,
+            "satisfied": true
+          }
+        ],
+        "revision": 5,
+        "evaluated_at": "2026-08-26T14:49:52.029936646Z"
+      },
+      "plan_history": [
+        {
+          "id": "plan-1787755792020256878",
+          "batch_id": "batch-1787755792009755076",
+          "stages": [
+            {
+              "index": 1,
+              "target_temperature_c": -1,
+              "hold_minutes": 5
+            }
+          ],
+          "target_temperature_c": 0,
+          "hold_minutes": 0,
+          "safety_preconditions": null,
+          "author_id": "tech",
+          "approver_id": "qa",
+          "approval_status": "approved",
+          "revision": 3,
+          "version": 1
+        }
+      ],
+      "execution": {
+        "completed_stages": 1,
+        "remaining_stages": 0,
+        "gate_reason": "all_stages_completed",
+        "paused": false
+      }
+    },
+    "chk-1787755792009215367-6": {
+      "id": "batch-1787755792009755076",
+      "core_code": "CHK-1787755792009215367-",
+      "drill_site": "chk-1787755792009215367-",
+      "depth_interval_m": "10-20",
+      "collection_time": "0001-01-01T00:00:00Z",
+      "initial_temperature_c": -30,
+      "integrity_grade": "low",
+      "status": "sealed",
+      "revision": 6,
+      "created_at": "2026-08-26T14:49:52.009758666Z",
+      "transport": {
+        "summary": "ok",
+        "min_temperature_c": -30,
+        "max_temperature_c": -20,
+        "allowed_min_c": -40,
+        "allowed_max_c": 0,
+        "exceeded": false,
+        "deviation_note": "",
+        "low_exceeded_minutes": 0,
+        "high_exceeded_minutes": 0,
+        "max_deviation_c": 0,
+        "exposure_degree_minutes": 0,
+        "severity": "none"
+      },
+      "plan": {
+        "id": "plan-1787755792020256878",
+        "batch_id": "batch-1787755792009755076",
+        "stages": [
+          {
+            "index": 1,
+            "target_temperature_c": -1,
+            "hold_minutes": 5
+          }
+        ],
+        "target_temperature_c": 0,
+        "hold_minutes": 0,
+        "safety_preconditions": null,
+        "author_id": "tech",
+        "approver_id": "qa",
+        "approval_status": "approved",
+        "revision": 3,
+        "version": 1
+      },
+      "observations": [
+        {
+          "id": "obs-1787755792029935216",
+          "batch_id": "batch-1787755792009755076",
+          "plan_id": "plan-1787755792020256878",
+          "stage_index": 1,
+          "observed_temperature_c": -1,
+          "meltwater_volume_ml": 2,
+          "appearance_note": "clear",
+          "deviation_code": "",
+          "recorded_by": "",
+          "recorded_at": "2026-08-26T14:49:52.029936006Z",
+          "hold_minutes": 5
+        }
+      ],
+      "review": {
+        "id": "review-1787755792034651088",
+        "batch_id": "batch-1787755792009755076",
+        "reviewer_id": "independent",
+        "findings": "",
+        "corrective_action": "",
+        "retest_result": "",
+        "decision": "pass",
+        "report_digest": "59fc7a543c87dd85a998f6a5fdfe40466a3dff38b2429780b1402f0c67e51499",
+        "sealed_at": "2026-08-26T14:49:52.034652148Z"
+      },
+      "risk": {
+        "grade": "low",
+        "score": 0,
+        "factors": [
+          {
+            "name": "low_exceeded_minutes",
+            "value": 0,
+            "threshold": 0,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "high_exceeded_minutes",
+            "value": 0,
+            "threshold": 0,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "max_deviation_c",
+            "value": 0,
+            "threshold": 3,
+            "contribution": 2,
+            "triggered": false
+          },
+          {
+            "name": "exposure_degree_minutes",
+            "value": 0,
+            "threshold": 30,
+            "contribution": 2,
+            "triggered": false
+          }
+        ],
+        "preconditions": [
+          {
+            "name": "deviation_note",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "disposition",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "quality_approval",
+            "required": false,
+            "satisfied": true
+          },
+          {
+            "name": "dual_review",
+            "required": false,
+            "satisfied": true
+          }
+        ],
+        "revision": 5,
+        "evaluated_at": "2026-08-26T14:49:52.029936646Z"
+      },
+      "plan_history": [
+        {
+          "id": "plan-1787755792020256878",
+          "batch_id": "batch-1787755792009755076",
           "stages": [
             {
               "index": 1,

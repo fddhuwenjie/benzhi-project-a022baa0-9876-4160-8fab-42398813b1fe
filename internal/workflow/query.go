@@ -396,21 +396,31 @@ func (s *Service) ReleaseReport(id string) (audit.SealedReport, error) {
 		return audit.SealedReport{}, fmt.Errorf("sealed snapshot digest mismatch")
 	}
 	cacheKey := id + ":" + b.Review.ReportDigest
+	// Re-verify the audit chain on every request so that a corrupted or
+	// tampered audit.jsonl is detected even after a report was cached.
+	n, tail, ve := s.audit.VerifyChain(id, b.Revision)
+	if ve != nil {
+		// Drop any stale cached receipt so a later request cannot serve a
+		// previously-verified report for an audit resource that is now invalid.
+		s.reportMu.Lock()
+		delete(s.reportCache, cacheKey)
+		s.reportMu.Unlock()
+		r := audit.BuildReport(b, tail)
+		r.VerifiedEvents = n
+		r.ChainTail = tail
+		r.Verified = false
+		r.VerificationError = ve.Error()
+		return r, fmt.Errorf("audit verification failed: %w", ve)
+	}
 	s.reportMu.RLock()
 	cached, ok := s.reportCache[cacheKey]
 	s.reportMu.RUnlock()
 	if ok {
 		return cached, nil
 	}
-	n, tail, e := s.audit.VerifyChain(id, b.Revision)
 	r := audit.BuildReport(b, tail)
 	r.VerifiedEvents = n
 	r.ChainTail = tail
-	if e != nil {
-		r.Verified = false
-		r.VerificationError = e.Error()
-		return r, e
-	}
 	r.Verified = true
 	s.reportMu.Lock()
 	s.reportCache[cacheKey] = r
