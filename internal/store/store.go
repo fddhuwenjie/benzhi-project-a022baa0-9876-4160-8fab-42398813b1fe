@@ -83,6 +83,14 @@ func (s *Store) Put(b domain.IceCoreBatch, expected int) error {
 	s.data.Batches[b.ID] = b
 	return s.persistLocked()
 }
+// Delete removes a batch from the snapshot. It is intended for rollback when a
+// subsequent audit or idempotency write fails after Put succeeded.
+func (s *Store) Delete(id string) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	delete(s.data.Batches, id)
+	_ = s.persistLocked()
+}
 func (s *Store) SaveIdempotency(key string, v any) error {
 	if key == "" {
 		return nil

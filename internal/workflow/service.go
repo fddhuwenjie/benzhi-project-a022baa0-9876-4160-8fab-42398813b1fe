@@ -62,8 +62,20 @@ func (s *Service) CreateBatch(b domain.IceCoreBatch, requestID string) (domain.I
 		return b, err
 	}
 	b.Revision = 1
-	_, _ = s.audit.Append(b.ID, "batch.created", b.Revision, b)
-	_ = s.store.SaveIdempotency(requestID, b)
+	if _, err := s.audit.Append(b.ID, "batch.created", b.Revision, b); err != nil {
+		// Audit persistence failed: roll back the batch so callers do not see a
+		// batch without its batch.created event, and do not leave an idempotent
+		// record that would replay a half-committed create.
+		s.store.Delete(b.ID)
+		return b, fmt.Errorf("persist audit event: %w", err)
+	}
+	if err := s.store.SaveIdempotency(requestID, b); err != nil {
+		// Idempotency persistence failed: roll back the batch and the audit
+		// entry is already durable. Since we cannot safely retract the audit
+		// event, treat the whole create as failed so callers retry.
+		s.store.Delete(b.ID)
+		return b, fmt.Errorf("persist idempotency record: %w", err)
+	}
 	return b, nil
 }
 func (s *Service) RegisterTransport(id string, t domain.TransportDeviation, expected int, requestID string) (domain.IceCoreBatch, error) {

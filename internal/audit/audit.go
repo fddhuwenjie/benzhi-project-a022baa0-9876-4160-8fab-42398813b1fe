@@ -35,14 +35,19 @@ func (l *Logger) Append(batchID, typ string, rev int, payload any) (Event, error
 	raw := canonicalEvent(e)
 	h := sha256.Sum256(raw)
 	e.Digest = hex.EncodeToString(h[:])
-	l.tail = e.Digest
 	f, err := os.OpenFile(l.path, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
 	if err != nil {
 		return e, err
 	}
 	defer f.Close()
 	enc := json.NewEncoder(f)
-	return e, enc.Encode(e)
+	if err := enc.Encode(e); err != nil {
+		return e, err
+	}
+	// Only advance the chain tail once the event is durably persisted; otherwise
+	// a failed write would poison subsequent events with a phantom previous digest.
+	l.tail = e.Digest
+	return e, nil
 }
 func canonicalEvent(e Event) []byte {
 	e.Digest = ""
